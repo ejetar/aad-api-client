@@ -1,0 +1,15 @@
+{
+    "name": "ejetar/aad-api-client",
+    "description": "",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Guilherme Almeida Girardi",
+            "email": "guilhermeagirardi@gmail.com"
+        }
+    ],
+    "require": {
+        "thenetworg/oauth2-azure": "^2.1"
+    }
+}
