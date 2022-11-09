@@ -9,6 +9,11 @@
             "email": "guilhermeagirardi@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Ejetar\\AzureADAPIClient\\": "src/"
+        }
+    },
     "require": {
         "thenetworg/oauth2-azure": "^2.1"
     }
