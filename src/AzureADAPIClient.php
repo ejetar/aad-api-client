@@ -33,7 +33,7 @@ class AzureADAPIClient {
             redirect:
             $authorizationUrl = $this->provider->getAuthorizationUrl(['scope' => $this->provider->scope]);
             request()->session()->put('OAuth2.state', $this->provider->getState());
-            header("Location: $authorizationUrl");
+            redirect()->to($authorizationUrl)->send();
 
         } else {
             if ($accessToken->hasExpired()) {
