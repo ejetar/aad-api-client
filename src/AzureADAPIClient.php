@@ -5,6 +5,7 @@ namespace Ejetar\AzureADAPIClient;
 use Ejetar\AzureADAPIClient\Resources\Aplications;
 use Ejetar\AzureADAPIClient\Resources\ServicePrincipals;
 use Ejetar\AzureADAPIClient\Resources\Users;
+use Ejetar\AzureADAPIClient\Resources\Invitations;
 use TheNetworg\OAuth2\Client\Provider\Azure;
 use TheNetworg\OAuth2\Client\Token\AccessToken;
 
@@ -15,6 +16,7 @@ class AzureADAPIClient {
     public Users $users;
     public Aplications $applications;
     public ServicePrincipals $service_principals;
+    public Invitations $invitations;
 
     public function __construct(array $options) {
         $this->provider = new Azure($options);
@@ -23,6 +25,7 @@ class AzureADAPIClient {
         $this->users = new Users($this->provider);
         $this->applications = new Aplications($this->provider);
         $this->service_principals = new ServicePrincipals($this->provider);
+        $this->invitations = new Invitations($this->provider);
     }
 
     public function auth() {
