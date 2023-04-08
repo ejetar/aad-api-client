@@ -12,7 +12,7 @@ class Users extends Base {
 
     public function list(array $headers = []) {
         $accessToken = request()->session()->get('access_token');
-        return $this->provider->get($this->ref(),$accessToken,$headers);
+        return collect($this->provider->get($this->ref(),$accessToken,$headers));
     }
 
     public function get($userPrincipalName, array $headers = []) {
@@ -40,8 +40,13 @@ class Users extends Base {
         return $this->provider->delete($this->ref("/$userPrincipalName/appRoleAssignments/$appRoleId"),$accessToken,$headers);
     }
 
-    public function assignments($userPrincipalName, array $headers = []) {
+    public function assignments($userPrincipalName, array $headers = [], $doNotWrap = false) {
         $accessToken = request()->session()->get('access_token');
-        return $this->provider->get($this->ref("/$userPrincipalName/appRoleAssignments"),$accessToken,$headers);
+        return collect($this->provider->get($this->ref("/$userPrincipalName/appRoleAssignments"),$accessToken,$headers,$doNotWrap));
     }
+
+	public function getObjects($tenant,$params = "",array $headers = []) {
+		$accessToken = request()->session()->get('access_token');
+		return collect($this->provider->getObjects($tenant, $this->ref()."?$params",$accessToken,$headers));
+	}
 }

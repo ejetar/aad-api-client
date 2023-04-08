@@ -12,7 +12,7 @@ class Aplications extends Base {
 
     public function list(array $headers = []) {
         $accessToken = request()->session()->get('access_token');
-        return $this->provider->get($this->ref(),$accessToken,$headers);
+        return collect($this->provider->get($this->ref(),$accessToken,$headers));
     }
 
     public function get($userPrincipalName, array $headers = []) {

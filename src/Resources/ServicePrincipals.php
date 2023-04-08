@@ -10,9 +10,9 @@ class ServicePrincipals extends Base {
         return $this->provider->post($this->ref(), $data, $accessToken, $headers);
     }
 
-    public function list(array $headers = []) {
+    public function list(array $headers = [],$doNotWrap = false) {
         $accessToken = request()->session()->get('access_token');
-        return $this->provider->get($this->ref(),$accessToken,$headers);
+        return collect($this->provider->get($this->ref(),$accessToken,$headers,$doNotWrap));
     }
 
     public function get($userPrincipalName, array $headers = []) {
@@ -32,6 +32,16 @@ class ServicePrincipals extends Base {
 
     public function assignments($userPrincipalName, array $headers = []) {
         $accessToken = request()->session()->get('access_token');
-        return $this->provider->get($this->ref("/$userPrincipalName/appRoleAssignments"),$accessToken,$headers);
+        return collect($this->provider->get($this->ref("/$userPrincipalName/appRoleAssignments"),$accessToken,$headers));
     }
+
+	public function appRoleAssignedTo($userPrincipalName,$params = "",array $headers = []) {
+		$accessToken = request()->session()->get('access_token');
+		return collect($this->provider->get($this->ref("/$userPrincipalName/appRoleAssignedTo")."?$params",$accessToken,$headers));
+	}
+
+	public function getObjects($tenant, array $headers = []) {
+		$accessToken = request()->session()->get('access_token');
+		return collect($this->provider->getObjects($tenant, $this->ref(),$accessToken,$headers));
+	}
 }
