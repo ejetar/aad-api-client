@@ -1,7 +1,7 @@
 {
     "name": "ejetar/aad-api-client",
     "description": "",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
@@ -16,6 +16,7 @@
         }
     },
     "require": {
-        "thenetworg/oauth2-azure": "^2.1"
+        "thenetworg/oauth2-azure": "^2.1",
+        "league/oauth2-client": "^2.6"
     }
 }

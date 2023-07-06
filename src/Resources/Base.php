@@ -2,14 +2,14 @@
 
 namespace Ejetar\AzureADAPIClient\Resources;
 
-use TheNetworg\OAuth2\Client\Provider\Azure;
+use League\OAuth2\Client\Provider\AbstractProvider;
 use TheNetworg\OAuth2\Client\Token\AccessToken;
 
 class Base {
     protected string $ref, $version = '1.0';
     protected AccessToken $accessToken;
 
-    public function __construct(protected Azure $provider) {
+    public function __construct(protected AbstractProvider $provider) {
         //
     }
 
